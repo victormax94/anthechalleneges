@@ -35,6 +35,8 @@ Lo schema generale di comunicazioni tra questi servizi è:
 
 S3-->HttpCall-->EC2(Tomcat)-->RDS(MySql)
 
+Il frontend statico è disponibile a questo indirizzo: http://salesproject.s3-website.eu-west-3.amazonaws.com/
+
 
 
 
