@@ -11,6 +11,7 @@ import { CreateTicket } from './model/CreateTicket';
 })
 export class ListServiceService {
   backendUrl="http://ec2-15-188-50-195.eu-west-3.compute.amazonaws.com:8080/salesproject/";
+  //backendUrl="http://localhost:8080/";
   getAllTickets="getAllsTickets";
   getAllProducts="getAllsProducts";
   createNewTicket="createTicket"

@@ -18,4 +18,5 @@ public class TaxesCostants {
 		result.put(3, "OTHER");
 		return Collections.unmodifiableMap(result);
 	}
+		
 }

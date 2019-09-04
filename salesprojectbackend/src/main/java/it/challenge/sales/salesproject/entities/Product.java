@@ -17,6 +17,7 @@ public class Product {
 	private Long id;
 	private String name;
 	private double price;
+	private double priceWithTaxes;
 	private boolean isImported;
 	private int type;
 
@@ -30,6 +31,7 @@ public class Product {
 		super();
 		this.name = name;
 		this.price = price;
+		this.priceWithTaxes= this.getPriceWithTaxes(price,type,isImported);
 		this.isImported = isImported;
 		this.type = type;
 	}
@@ -69,22 +71,38 @@ public class Product {
 	public void setType(int type) {
 		this.type = type;
 	}
-	public double getPriceWithTaxes() {
+	public double getPriceWithTaxes(double price,int type,boolean isImported) {
 
-		double totalTaxes= (this.type==3? TaxesCostants.BASIC_TAX:0.0)+ (this.isImported? TaxesCostants.IMPORTED_ADDITIONAL_TAX : 0.0);
-		double realPrice= this.round((totalTaxes/100)*this.price+this.price,2);
+		double totalTaxes= (type==3? TaxesCostants.BASIC_TAX:0.0)+ (isImported? TaxesCostants.IMPORTED_ADDITIONAL_TAX : 0.0);
+		double realPrice= this.round(((totalTaxes/100)*price)+price,2);
 		return realPrice;
 
 	}
 
 	public double round(double value, int places) { 
 		if (places < 0) throw new IllegalArgumentException();
-		long factor = (long) Math.pow(10, places); value = value * factor;
-		long tmp = Math.round(value); return (double) tmp / factor; }
+		long factor = (long) Math.pow(10, places); 
+		value = value * factor;
+		long tmp = Math.round(value); 
+		
+		return (double) tmp / factor;
+		
+	}
 
 	public double amountOfTaxes() {
 
-		return this.getPriceWithTaxes()-this.price;
+		return this.priceWithTaxes-this.price;
 	}
+
+	public double getPriceWithTaxes() {
+		return this.priceWithTaxes;
+	}
+
+	public void setPriceWithTaxes(double priceWithTaxes) {
+		this.priceWithTaxes = priceWithTaxes;
+	}
+	
+	
+	
 
 }

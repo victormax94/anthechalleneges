@@ -29,8 +29,8 @@ public class Ticket {
 	public Ticket(List<RowOfTicket> rows) {
 		super();
 		this.rows = rows;
-		this.taxesPaid=this.truncateDecimal(this.getTotalOfTicket(true),2).doubleValue();
-		this.total=this.truncateDecimal(this.getTotalOfTicket(false),2).doubleValue();
+		this.taxesPaid=this.round(this.getTotalOfTicket(true),2);
+		this.total=this.round(this.getTotalOfTicket(false),2);
 	}
 	public Long getId() {
 		return id;
@@ -73,6 +73,15 @@ public class Ticket {
 		 
 		 return total;
 		
+	}
+	
+	public double round(double value, int places) { 
+		if (places < 0) throw new IllegalArgumentException();
+		long factor = (long) Math.pow(10, places); 
+		value = value * factor;
+		long tmp = Math.round(value); 
+		
+		return (double) tmp / factor;
 		
 	}
 	
