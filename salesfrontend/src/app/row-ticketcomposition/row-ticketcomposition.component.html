@@ -1,0 +1,13 @@
+
+
+<div class="container">
+<span>{{select.name}}</span> 
+<span>{{select.price}}$</span> 
+<div class="content">
+<span>Choose your quantity: </span>
+<select  [(ngModel)]="currentValue" (change)="selected($event.target.value)">
+  <option [selected]="number===1"*ngFor="let number of quantities" value="{{number}}">{{number}}</option>
+</select>
+<mat-icon (click)="deleteItem()">delete</mat-icon> 
+</div>
+</div>

@@ -1,0 +1,25 @@
+
+
+<div class="mainContainer" style="overflow-y: scroll; height:100vh;">
+<h1 *ngIf="inputList.length==0">Select some products for create your ticket</h1>
+<div *ngIf="inputList.length>0" class="container">
+        <h1>Shopping list</h1>
+    <app-row-ticketcomposition *ngFor="let prod of inputList"  [select]="prod"[selectedList]="inputList" [selectedQuantities]="createTicketArray"></app-row-ticketcomposition>
+</div>
+<div class="buttonContainer">
+<button class="buttonCreateTicket" *ngIf="inputList.length>0" (click)="createTicket()">
+    Create Ticket
+</button>
+</div>
+<div *ngIf="ticketCreated">
+        
+    <div class="container">
+    <app-rowofticket *ngFor="let row of ticketCreated.rows" [rowTicket]="row"></app-rowofticket>
+    </div>
+    <div class="totalContainer">
+    <span>Sales Taxes: {{ticketCreated.taxesPaid}} </span>
+    <span>Total: {{ticketCreated.total}}</span>
+    </div>
+</div>
+
+</div>

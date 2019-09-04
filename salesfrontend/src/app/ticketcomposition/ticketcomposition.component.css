@@ -1,0 +1,69 @@
+.container{
+    border-radius: 30px;
+    border-width: 2px;
+    border-color: blueviolet;
+    border-style: solid;
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items: center;
+    margin-top: 20px;
+    width: 300px;
+};
+.mainContainer{
+    background-color:transparent;
+    margin-bottom: 5px;
+    border-color: hotpink;
+    display: flex;
+    flex-direction: column;
+    justify-content:flex-start;
+    align-items: center;
+}
+
+.ticketCreated{
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items: center;
+}
+
+.totalContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content:flex-start;
+    align-items: center;
+    border-radius: 30px;
+    border-width: 2px;
+    border-color: red;
+    border-style: solid;
+    width: 300px;
+    margin-top:20px;
+}
+
+.buttonCreateTicket{
+
+    background-color: darkviolet;
+    border-radius: 30px;
+    text-align: center;
+    color: black;
+    text-decoration: coral;
+    margin-top: 20px;
+    margin-bottom: 20px
+
+}
+
+
+.buttonContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items: center;
+}
+
+
+.finalTicket{
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items: center;
+}

@@ -1,0 +1,19 @@
+.rowCatalog{
+    background-color: blueviolet;
+    border-radius: 30px;
+    padding:15px;
+    display: flex;
+    flex-direction: column;
+    justify-content:flex-start;
+    align-items: center;
+    margin-bottom: 15px;
+
+}
+
+.toggleButton{
+    background: #dbb2db;
+}
+
+.toggleButtonSelected{
+    background: #cc77cc;
+}
