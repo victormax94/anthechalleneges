@@ -6,45 +6,61 @@ import java.util.List;
 
 public class StringCalculator {
 
-	private List<String> input;
+	private String input;
 
 	public StringCalculator(String input) {
 		super();
-		this.input = convertIntoNumberList(input);
+		this.input=input;
 	}
-
-	public List<String> convertIntoNumberList(String s) {
-		String stringOfNumbers = s.replaceAll("[^-?0-9]+", " "); 
-		List<String>  listOfNumbers=Arrays.asList(stringOfNumbers.trim().split(" "));
-		return listOfNumbers;
+   	
+	public String[] getDelimiters() {
+		String[]  splitArray= this.input.split("//");
+		String supportString= splitArray[1].replace("[","").replace("]",",");
+		return supportString.split(",");
 	}
-
-
+	public String getStringWithNumberAndDelimiters() {
+		return this.input.split("//")[2];
+	}
+	public boolean checkExistDelimiters() {
+		return this.input.contains("//");
+	}
+	public List<String> getArrayOfNumbers() {
+		List<String> resultArray;
+		if(this.checkExistDelimiters()) {
+			resultArray=this.getArrayOfNumberWithDelimitersFiltered();
+		}
+		else
+			resultArray= new ArrayList<String>(Arrays.asList(this.input.split(",")));
+	 return resultArray;	
+	}
+	public List<String> getArrayOfNumberWithDelimitersFiltered() {
+		String[] delimiters=this.getDelimiters();
+		String numbersWithDelimiters=this.getStringWithNumberAndDelimiters();
+		List<String>  arrayResult;
+		for(String delimiter:delimiters) {
+			numbersWithDelimiters=numbersWithDelimiters.replace(delimiter,",");
+		}
+		arrayResult=new ArrayList<String>(Arrays.asList(numbersWithDelimiters.split(","))); 		
+	  return arrayResult;
+	}
 	//pre-condition: no negatives numbers
 	public int add() {
-
-		
-
 		int sum=0;
-
-		for(String n: this.input) {
+		List<String> arrayOfNumbers= this.getArrayOfNumbers();
+		for(String n: arrayOfNumbers) {
 	      if(!n.trim().equals("")) {
 			Integer intValue = Integer.valueOf(n);
 			if(intValue<1000)
 				sum+=intValue;
 	      }
 		}
-
 		return sum;
-
 	}
 
 	public boolean checkNoNegativeNumbers() {
-
 		List<Integer> negativeNumbers= new ArrayList<>();
-	
-
-		for(String n:this.input) {
+		List<String> arrayOfNumbers= this.getArrayOfNumbers();
+		for(String n:arrayOfNumbers) {
 		  if(!n.trim().equals("")) {
 			Integer intValue = Integer.valueOf(n);
 			if(intValue<0)
@@ -60,7 +76,5 @@ public class StringCalculator {
 		return existNegativeNumbers;
 
 	}
-
-
 
 }
